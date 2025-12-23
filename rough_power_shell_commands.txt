@@ -38,6 +38,10 @@ python -m pip install --upgrade pip
 
 
 pip install langchain sentence-transformers qdrant-client wikipedia tqdm requests
+pip install langchain-community langchain-core
+pip install langchain-text-splitters
 
+Install Docker Desktop in your windows machine
 
 docker-compose up -d
+
