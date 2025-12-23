@@ -66,39 +66,6 @@ Vector is compared against 12,560 stored vectors
 
 Top-K closest matches returned
 
-
-🎯 PHASE 1 — WHAT YOU ACHIEVED (IMPORTANT)
-
-You now understand and built:
-
-✅ RAG fundamentals
-✅ Vector databases
-✅ Chunking strategy
-✅ Embedding models
-✅ Semantic retrieval
-✅ Source attribution
-
-This is exactly the same foundation used by:
-
-ChatGPT Retrieval
-
-Perplexity-style search
-
-Internal enterprise RAG systems
-
-🔮 HOW PHASE 2 BUILDS ON THIS
-
-Phase 2 will reuse everything above and add:
-
-Text Embeddings  ─┐
-                  ├──► Unified Vector Space (CLIP)
-Image Embeddings ─┘
-
-
-Meaning:
-
-Text → image search
-
 Image → text search
 
 Multimodal chat later
