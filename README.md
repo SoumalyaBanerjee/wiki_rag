@@ -1,6 +1,5 @@
 🧩 PHASE 1 — TEXT RAG (RECAP DIAGRAM)
 
-
 ┌────────────────────┐
 │  Wikipedia Pages   │
 │  (~100 articles)   │
@@ -65,6 +64,7 @@
 │  Retrieved Text + Sources      │
 │  (Wikipedia links)             │
 └────────────────────────────────┘
+
 
 🧠 PHASE 1 — FLOW EXPLAINED IN SIMPLE WORDS
 1️⃣ Data ingestion
