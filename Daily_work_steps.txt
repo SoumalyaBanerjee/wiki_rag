@@ -1,0 +1,29 @@
+1.
+Open Vs Code to point at :
+(.venv) PS C:\Users\souma\projects\wiki_rag
+
+2. 
+Open Docker Desktop 
+
+3. from  PS C:\Users\souma\projects\wiki_rag VS code terminal :
+
+docker-compose up -d
+.\.venv\Scripts\Activate.ps1
+
+4.
+Use web browser :
+
+Qdrant dashboard
+
+http://localhost:6333/dashboard
+
+
+MinIO console
+
+http://localhost:9001
+
+
+Login:
+
+user: admin
+pass: password123
