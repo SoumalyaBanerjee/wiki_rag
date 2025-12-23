@@ -69,3 +69,9 @@ Top-K closest matches returned
 Image → text search
 
 Multimodal chat later
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+<img width="768" height="456" alt="image" src="https://github.com/user-attachments/assets/e0be60c5-8426-4437-a9fb-b8c85516aa3d" />
+
