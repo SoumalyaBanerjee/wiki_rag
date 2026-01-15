@@ -1,3 +1,6 @@
+<img width="463" height="181" alt="image" src="https://github.com/user-attachments/assets/002cf306-46bd-4a7a-b635-8cc2f0486f8c" />
+
+
 🧩 PHASE 1 — TEXT RAG (RECAP DIAGRAM)
 
 
