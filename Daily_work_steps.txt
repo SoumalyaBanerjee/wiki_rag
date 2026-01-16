@@ -1,5 +1,7 @@
 1.
 Open Vs Code to point at :
+.\.venv\Scripts\Activate.ps1
+
 (.venv) PS C:\Users\souma\projects\wiki_rag
 
 2. 
