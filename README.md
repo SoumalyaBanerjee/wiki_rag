@@ -1,3 +1,9 @@
+Next Steps :
+
+1. Try multimodal models
+2. give a check on more models
+3. use a model to get the images plus text
+
 <img width="463" height="181" alt="image" src="https://github.com/user-attachments/assets/002cf306-46bd-4a7a-b635-8cc2f0486f8c" />
 
 
