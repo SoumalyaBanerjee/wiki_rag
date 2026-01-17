@@ -10,9 +10,5 @@ ENV/
 .vscode/
 .idea/
 .DS_Store
-minio_data/
-qdrant_storage/
-data/demo_images/
-data/demo_images2/
 *.sqlite3
 .env
