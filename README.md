@@ -4,6 +4,11 @@ Start with :
 
 Start the docker in local system
 
+.\.venv\Scripts\pip install -r requirements.txt
+
+.\.venv\Scripts\python scripts/config.py
+
+
 cd c:\Users\souma\projects\wiki_rag
 .\.venv\Scripts\streamlit run scripts/6.streamlit_app.py
 
