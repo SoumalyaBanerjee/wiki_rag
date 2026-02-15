@@ -1,5 +1,12 @@
 # wiki_rag
 
+Start with :
+
+Start the docker in local system
+
+cd c:\Users\souma\projects\wiki_rag
+.\.venv\Scripts\streamlit run scripts/6.streamlit_app.py
+
 A small research/experiment repository for retrieval-augmented generation (RAG) using Qdrant, MinIO, and local image/text ingestion scripts.
 
 ---
