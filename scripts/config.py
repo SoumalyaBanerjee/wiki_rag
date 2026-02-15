@@ -39,6 +39,21 @@ class Config:
     USE_GPU = os.getenv("USE_GPU", "false").lower() == "true"
     ENABLE_IMAGE_SEARCH = True
     ENABLE_TEXT_SEARCH = True
+
+    def __init__(self):
+        # expose lowercase runtime fields for UI
+        self.llm_provider = self.LLM_PROVIDER.lower()
+        self.temperature = self.TEMPERATURE
+        self.max_tokens = self.MAX_TOKENS
+        self.top_k = self.TOP_K_RETRIEVAL
+
+        # optional — often used
+        self.enable_image_search = self.ENABLE_IMAGE_SEARCH
+        self.enable_text_search = self.ENABLE_TEXT_SEARCH
+        self.qdrant_host = self.QDRANT_HOST
+        self.qdrant_port = self.QDRANT_PORT
+        self.text_collection = self.COLLECTION_TEXT
+        self.image_collection = self.COLLECTION_IMAGE
     
     @classmethod
     def validate(cls) -> bool:

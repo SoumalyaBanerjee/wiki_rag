@@ -1,22 +1,25 @@
-# Phase 1-2: Your Original Working Setup
-langchain
-sentence-transformers
-qdrant-client
-wikipedia
-tqdm
-requests
-langchain-community
-langchain-core
-langchain-text-splitters
-open-clip-torch
-pillow
-boto3
-minio
+# ===== LangChain stable pre-refactor =====
+langchain==0.0.352
 
-# Phase 3: Chat Agent & LLM Integration
-streamlit
-streamlit-chat
-python-dotenv
-pydantic
-langchain-groq
-langchain-openai
+# Do NOT install modular packages separately
+# (they will conflict)
+
+sentence-transformers==2.2.2
+qdrant-client==1.7.0
+wikipedia==1.4.0
+tqdm==4.66.1
+requests==2.31.0
+
+streamlit==1.31.0
+streamlit-chat==0.1.1
+python-dotenv==1.0.1
+pydantic==1.10.13
+
+open-clip-torch==2.24.0
+pillow==10.2.0
+
+boto3==1.34.34
+minio==7.2.0
+
+langchain-groq==0.0.1
+langchain-openai==0.0.5
