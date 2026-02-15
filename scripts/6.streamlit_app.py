@@ -10,6 +10,9 @@ Interactive web interface for the Phase 3 chat agent with:
 - Conversation history management
 """
 
+from dotenv import load_dotenv
+
+
 import streamlit as st
 import os
 import sys
@@ -22,6 +25,17 @@ from config import Config
 from utils.rag_agent import RAGAgent
 from utils.retriever import Retriever
 from utils.citation_manager import CitationManager
+
+from langchain_groq import ChatGroq
+import os
+load_dotenv()
+
+llm = ChatGroq(
+    api_key=os.getenv("GROQ_API_KEY"),
+    model="llama3-70b-8192",
+    temperature=0
+)
+
 
 # ============================================================================
 # PAGE CONFIGURATION
@@ -84,7 +98,12 @@ def initialize_session_state():
     if "agent" not in st.session_state:
         with st.spinner("🔧 Initializing RAG Agent..."):
             try:
-                st.session_state.agent = RAGAgent(st.session_state.config)
+                # st.session_state.agent = RAGAgent(st.session_state.config)
+                # st.session_state.agent = RAGAgent(
+                #                         config=st.session_state.config,
+                #                         llm=llm
+                #                                 )
+                st.session_state.agent = RAGAgent()
                 st.session_state.agent_ready = True
             except Exception as e:
                 st.session_state.agent_ready = False
