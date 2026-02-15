@@ -101,7 +101,7 @@ class RAGAgent:
                 print(f"🤖 Initializing Groq LLM...")
                 llm = ChatGroq(
                     api_key=Config.GROQ_API_KEY,
-                    model_name="mixtral-8x7b-32768",
+                    model_name="llama-3.3-70b-versatile",
                     temperature=Config.TEMPERATURE,
                     max_tokens=Config.MAX_TOKENS
                 )
