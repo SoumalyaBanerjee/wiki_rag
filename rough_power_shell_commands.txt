@@ -1,0 +1,51 @@
+Prerequisites (what to install)
+
+Windows (10/11) — up to date.
+
+VS Code — installed. (https://code.visualstudio.com/
+)
+
+Recommended extensions: Python, Remote - Containers (optional).
+
+Docker Desktop — install and run Docker for Windows. Enable WSL 2 backend if prompted. (https://www.docker.com/products/docker-desktop
+)
+
+Git (optional but useful) — https://git-scm.com/
+
+Python 3.10+ — install from https://www.python.org/
+ and check python --version.
+
+(Optional) Conda (Miniconda) — helpful for environment management: https://docs.conda.io/en/latest/miniconda.html
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+
+cd $HOME
+mkdir projects
+cd projects
+mkdir wiki_rag
+cd wiki_rag
+code .   # opens VS Code in this folder
+
+
+python -m venv .venv
+# activate venv (PowerShell)
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+
+
+
+pip install langchain sentence-transformers qdrant-client wikipedia tqdm requests
+pip install langchain-community langchain-core
+pip install langchain-text-splitters
+pip install langchain-community
+pip install -U langchain-huggingface langchain-qdrant
+
+pip install open-clip-torch pillow boto3 minio
+
+
+
+
+docker-compose up -d
