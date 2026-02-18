@@ -1,25 +1,35 @@
 import wikipedia
 from tqdm import tqdm
 
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Qdrant
 from qdrant_client import QdrantClient
 
-COLLECTION_NAME = "wiki_text_poc"
+COLLECTION_NAME = "wiki_animals_poc"
 
 TOPICS = [
-    "Artificial intelligence",
-    "Machine learning",
-    "Deep learning",
-    "Neural networks",
-    "Computer vision",
-    "Natural language processing",
-    "Data science",
-    "Big data",
-    "Cloud computing",
-    "Python programming",
-] * 10  # 100 pages
+    "Cat",
+    "Dog",
+    "Lion",
+    "Tiger",
+    "Elephant",
+    "Giraffe",
+    "Zebra",
+    "Horse",
+    "Bear",
+    "Wolf",
+    "Fox",
+    "Leopard",
+    "Cheetah",
+    "Kangaroo",
+    "Panda",
+    "Penguin",
+    "Dolphin",
+    "Whale",
+    "Rabbit",
+    "Deer"
+]
 
 print("🔹 Loading embedding model...")
 embeddings = HuggingFaceEmbeddings(
@@ -35,19 +45,22 @@ splitter = RecursiveCharacterTextSplitter(
 
 documents = []
 
-print("🔹 Fetching Wikipedia pages...")
+print("🔹 Fetching Wikipedia animal pages...")
 for topic in tqdm(TOPICS):
     try:
         page = wikipedia.page(topic)
         chunks = splitter.split_text(page.content)
-        for chunk in chunks:
+
+        for i, chunk in enumerate(chunks):
             documents.append({
                 "text": chunk,
                 "metadata": {
                     "title": page.title,
-                    "source": page.url
+                    "source": page.url,
+                    "chunk_id": i
                 }
             })
+
     except Exception as e:
         print(f"⚠️ Skipped {topic}: {e}")
 
@@ -55,6 +68,7 @@ texts = [d["text"] for d in documents]
 metadatas = [d["metadata"] for d in documents]
 
 print(f"🔹 Uploading {len(texts)} chunks to Qdrant...")
+
 Qdrant.from_texts(
     texts=texts,
     embedding=embeddings,
@@ -63,4 +77,4 @@ Qdrant.from_texts(
     collection_name=COLLECTION_NAME,
 )
 
-print("✅ Phase 1 ingestion complete")
+print("✅ Animal ingestion complete")

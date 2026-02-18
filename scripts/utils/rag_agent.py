@@ -201,6 +201,19 @@ Please provide a comprehensive answer with citations.""",
                 text_k=text_k,
                 image_k=image_k
             )
+
+            print("\n=== RETRIEVAL DEBUG ===")
+            print("Text results count:", len(retrieval_result["texts"]))
+            print("Image results count:", len(retrieval_result["images"]))
+
+
+            for i, t in enumerate(retrieval_result["texts"]):
+                print(f"\nText {i+1} title:", t.get("title"))
+                print("Score:", t.get("score"))
+
+            for i, img in enumerate(retrieval_result["images"]):
+                print(f"\nImage {i+1}:", img.get("image_name"))
+            print("=== END DEBUG ===\n")
             
             # Extract and format context
             text_results = retrieval_result["texts"]
