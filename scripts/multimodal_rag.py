@@ -63,8 +63,11 @@ class MultimodalRAG:
         tokens = self.tokenizer([query]).to(self.device)
 
         with torch.no_grad():
-            embedding = self.clip_model.encode_text(tokens).cpu().numpy()[0]
-
+            # embedding = self.clip_model.encode_text(tokens).cpu().numpy()[0]
+            embedding = self.clip_model.encode_text(tokens)
+            embedding = embedding / embedding.norm(dim=-1, keepdim=True)
+        embedding = embedding.cpu().numpy()[0]
+        
         results = self.qdrant.search(
             collection_name="demo_animals",
             query_vector=embedding.tolist(),

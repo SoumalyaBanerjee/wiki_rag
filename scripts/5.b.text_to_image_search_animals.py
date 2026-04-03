@@ -27,7 +27,7 @@ qdrant = QdrantClient(host="localhost", port=6333)
 # -----------------------------
 # Query
 # -----------------------------
-query = "stripped animal"
+query = "fastest land animal"
 
 print(f"\n🔍 Query: {query}")
 

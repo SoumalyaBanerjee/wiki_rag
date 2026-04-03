@@ -5,6 +5,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Qdrant
 from qdrant_client import QdrantClient
+from qdrant_client.http.models import VectorParams, Distance
+
 
 COLLECTION_NAME = "wiki_animals_poc"
 
@@ -36,7 +38,8 @@ embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2"
 )
 
-client = QdrantClient(host="localhost", port=6333)
+# client = QdrantClient(host="localhost", port=6333)
+client = QdrantClient(":memory:")
 
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=500,
@@ -48,7 +51,17 @@ documents = []
 print("🔹 Fetching Wikipedia animal pages...")
 for topic in tqdm(TOPICS):
     try:
-        page = wikipedia.page(topic)
+        search_results = wikipedia.search(topic)
+
+        if not search_results:
+            print(f"⚠️ No results for {topic}")
+            continue
+
+        # pick the most relevant result
+        page = wikipedia.page(title=search_results[0], auto_suggest=False)
+
+        print(f"✅ Loaded: {page.title}")
+
         chunks = splitter.split_text(page.content)
 
         for i, chunk in enumerate(chunks):
@@ -69,12 +82,24 @@ metadatas = [d["metadata"] for d in documents]
 
 print(f"🔹 Uploading {len(texts)} chunks to Qdrant...")
 
-Qdrant.from_texts(
-    texts=texts,
-    embedding=embeddings,
-    metadatas=metadatas,
-    url="http://localhost:6333",
+# Step 1: Create collection
+client.recreate_collection(
     collection_name=COLLECTION_NAME,
+    vectors_config=VectorParams(
+        size=384,
+        distance=Distance.COSINE
+    )
+)
+
+db = Qdrant(
+    client=client,
+    collection_name=COLLECTION_NAME,
+    embeddings=embeddings,
+)
+
+db.add_texts(
+    texts=texts,
+    metadatas=metadatas
 )
 
 print("✅ Animal ingestion complete")
